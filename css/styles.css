@@ -1,0 +1,87 @@
+/* ---- Product gallery ---- */
+.gallery-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:18px; margin-top:44px; }
+
+
+@media (max-width: 900px){ .gallery-grid{ grid-template-columns: repeat(3,1fr); } }
+
+
+@media (max-width: 560px){ .gallery-grid{ grid-template-columns: 1fr; } }
+
+
+.gallery-item{ position:relative; border-radius:6px; overflow:hidden; aspect-ratio: 1/1; cursor:zoom-in; }
+
+.gallery-item img{ width:100%; height:100%; object-fit:cover; transition: transform .6s var(--ease); }
+
+.gallery-item:hover img{ transform: scale(1.08); }
+
+
+
+/* =========================================================
+   CAPACIDADES — mini-cards dentro de cada product-card
+   Namespace propio (cap-*) para no chocar con .card / .gallery-item / .p-photo
+   ========================================================= */
+.p-capacities{
+  margin: 22px 0 26px;
+}
+.p-capacities h4{
+  font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+  color: var(--navy); margin-bottom: 12px;
+}
+.cap-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 14px;
+}
+.cap-card{
+  background: var(--grey-50);
+  border: 1px solid var(--grey-100);
+  border-radius: 6px;
+  overflow: hidden;
+  text-align:center;
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), border-color var(--dur-fast);
+}
+.cap-card:hover{
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--sky);
+}
+.cap-photo{
+ aspect-ratio: 3/4;           /* antes: 1/1 — más alto, para productos verticales */
+  background: var(--white);    /* rellena el espacio que deja "contain" */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 10px;
+}
+.cap-photo img{
+  width:100%;
+  height:100%;
+  object-fit: contain;
+}
+.cap-label{
+  padding: 8px 6px;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--navy-deep);
+}
+
+
+/* Variante centrada de cap-grid, para grids con pocos items fijos */
+.cap-grid-center{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(120px, 160px));
+  justify-content: center;
+  gap: 14px;
+}
+
+@media (max-width: 700px){
+  .cap-grid-center{
+    grid-template-columns: repeat(2, minmax(120px, 160px));
+  }
+}
+
+@media (max-width: 420px){
+  .cap-grid-center{
+    grid-template-columns: repeat(1, minmax(120px, 200px));
+  }
+}
